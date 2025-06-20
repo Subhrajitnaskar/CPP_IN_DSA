@@ -1,6 +1,9 @@
 #include<iostream>
 using namespace std;
 
+#include<iostream>
+using namespace std;
+
 class Node {
 public:    
     int data;
@@ -12,7 +15,7 @@ public:
     } 
     
     ~Node() {
-          cout<<"~Node"<<data<<endl;
+         // cout<<"~Node"<<data<<endl;
         if(next != NULL){
             delete next;
             next = NULL;
@@ -31,7 +34,7 @@ public:
     } 
     
     ~List() {
-        cout<<"~List\n";
+       // cout<<"~List\n";
         if(head != NULL){
             delete head;
             head = NULL;
@@ -72,6 +75,18 @@ public:
 
         cout<<"NULL\n";
     }
+
+    void pop_back() {
+        Node* temp = head;
+
+        while(temp->next->next != NULL) {
+            temp = temp->next;
+        }
+
+        temp->next = NULL;
+        delete tail;
+        tail = temp;
+    }
 };
 
 int main(){
@@ -80,6 +95,9 @@ int main(){
     ll.push_front(2);
     ll.push_front(1);
 
+    ll.printlist();
+    
+    ll.pop_back();
     ll.printlist();
    
     return 0;

@@ -12,7 +12,7 @@ public:
     } 
     
     ~Node() {
-          cout<<"~Node"<<data<<endl;
+        //  cout<<"~Node"<<data<<endl;
         if(next != NULL){
             delete next;
             next = NULL;
@@ -31,7 +31,7 @@ public:
     } 
     
     ~List() {
-        cout<<"~List\n";
+      //  cout<<"~List\n";
         if(head != NULL){
             delete head;
             head = NULL;
@@ -72,14 +72,45 @@ public:
 
         cout<<"NULL\n";
     }
+
+    int  getsize() {
+        int sz = 0;
+        Node* temp = head;
+
+        while(temp != NULL) {
+            temp = temp->next;
+            sz++;
+        }
+
+        return sz;
+    }
+
+    void removeNth(int n) {
+        int size = getsize();
+        Node* prev = head;
+
+        for(int i=1; i<(size-n); i++){
+            prev = prev->next;
+        }
+
+        Node* toDel = prev->next;
+        cout<< "Going to delet : "<< toDel->data << endl;
+
+        prev->next = prev->next->next;
+    }
 };
 
 int main(){
     List ll;
+    ll.push_front(5);
+    ll.push_front(4);
     ll.push_front(3);
     ll.push_front(2);
     ll.push_front(1);
 
+    ll.printlist();
+
+    ll.removeNth(2);
     ll.printlist();
    
     return 0;

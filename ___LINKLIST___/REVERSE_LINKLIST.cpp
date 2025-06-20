@@ -12,7 +12,7 @@ public:
     } 
     
     ~Node() {
-          cout<<"~Node"<<data<<endl;
+        //  cout<<"~Node"<<data<<endl;
         if(next != NULL){
             delete next;
             next = NULL;
@@ -31,7 +31,7 @@ public:
     } 
     
     ~List() {
-        cout<<"~List\n";
+      // cout<<"~List\n";
         if(head != NULL){
             delete head;
             head = NULL;
@@ -72,14 +72,35 @@ public:
 
         cout<<"NULL\n";
     }
+
+    void reverse() {
+        Node* curr = head;
+        Node* prev = NULL;
+        tail = head;
+
+        while(curr != NULL) {
+            Node* next = curr->next;
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
+        }
+
+        head = prev;
+    }
 };
 
 int main(){
     List ll;
+    ll.push_front(5);
+    ll.push_front(4);
     ll.push_front(3);
     ll.push_front(2);
     ll.push_front(1);
 
+    ll.printlist();
+
+    ll.reverse();
     ll.printlist();
    
     return 0;

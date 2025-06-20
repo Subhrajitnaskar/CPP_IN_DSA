@@ -12,7 +12,7 @@ public:
     } 
     
     ~Node() {
-          cout<<"~Node"<<data<<endl;
+         // cout<<"~Node"<<data<<endl;
         if(next != NULL){
             delete next;
             next = NULL;
@@ -31,7 +31,7 @@ public:
     } 
     
     ~List() {
-        cout<<"~List\n";
+     //   cout<<"~List\n";
         if(head != NULL){
             delete head;
             head = NULL;
@@ -72,15 +72,40 @@ public:
 
         cout<<"NULL\n";
     }
+
+    int helper(Node* temp, int key){
+        if(temp == NULL) {
+            return -1;
+        }
+
+        if(temp->data == key) {
+            return 0;
+        }
+        
+        int idx = helper(temp->next,key);
+        if(idx == -1){
+            return -1;
+        }
+
+        return idx+1;
+    }
+
+    int searchRec(int key){
+        return helper(head,key);
+    }
 };
 
 int main(){
     List ll;
+    ll.push_front(5);
+    ll.push_front(4);
     ll.push_front(3);
     ll.push_front(2);
     ll.push_front(1);
 
     ll.printlist();
+
+    cout<<ll.searchRec(4)<<endl;
    
     return 0;
 }
