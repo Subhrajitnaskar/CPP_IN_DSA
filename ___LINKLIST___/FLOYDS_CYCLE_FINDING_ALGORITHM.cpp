@@ -9,7 +9,15 @@ public:
     Node(int val) {
         data = val;
         next = NULL;
-    }    
+    } 
+    
+    ~Node() {
+          cout<<"~Node"<<data<<endl;
+        if(next != NULL){
+            delete next;
+            next = NULL;
+        }
+    }
 };
 
 class List {
@@ -20,7 +28,15 @@ public:
     List() {
         head = NULL;
         tail = NULL;
-    }    
+    } 
+    
+    ~List() {
+        cout<<"~List\n";
+        if(head != NULL){
+            delete head;
+            head = NULL;
+        }
+    }
 
     void push_front(int val) {
         Node* newNode = new Node(val);
@@ -35,8 +51,9 @@ public:
     }
     
     void push_back(int val) {
-        Node* newNode = new Node(val);                                     
-            if(head == NULL) {
+        Node* newNode = new Node(val);
+
+        if(head == NULL) {
             head = tail = newNode;
         }
         else{
@@ -64,8 +81,6 @@ int main(){
     ll.push_front(1);
 
     ll.printlist();
-    ll.push_back(4);
-    ll.push_back(5);
-    ll.printlist();
+   
     return 0;
 }
