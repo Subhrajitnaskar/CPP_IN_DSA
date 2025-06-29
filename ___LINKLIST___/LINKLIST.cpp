@@ -39,7 +39,7 @@ public:
             if(head == NULL) {
             head = tail = newNode;
         }
-        else{
+         else{
             tail->next = newNode;
             tail = newNode;
         }
