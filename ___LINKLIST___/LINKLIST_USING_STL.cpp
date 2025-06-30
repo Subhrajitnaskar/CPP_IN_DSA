@@ -29,5 +29,14 @@ int main() {
     // cout<<endl;
 
     printList(ll);
+
+    cout<<ll.size()<<endl;
+    cout<<"head = "<<ll.front()<<endl;
+    cout<<"tail = "<<ll.back()<<endl;
+
+    ll.pop_front();
+    printList(ll);
+    ll.pop_back();
+    printList(ll);
     return 0;
 }
