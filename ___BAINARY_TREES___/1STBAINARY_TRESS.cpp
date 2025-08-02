@@ -14,7 +14,7 @@ public:
     }
 };
 
-int idx = -1;
+static int idx = -1;
 
 Node* buildTree(vector<int>& nodes) {
     idx++;
